@@ -25,7 +25,7 @@ your local machine for development and testing purposes.
 
 Step 1: Navigate to directory
 
-    cd ./stat/client
+    cd ./pageturnreviews/client
 
 Step 2: Create .env file
 
@@ -63,7 +63,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Other Setups
 
   - **API** - [Setup](../api)
-  - **Harvester** - [Setup](../harvester)
 
 ## Authors
 
