@@ -1,13 +1,13 @@
-# Stat
+# Page Turn Reviews
 
-Stat uses a monolithic codebase, to ensure developers are given 
+Pageturnrevies is a monolithic codebase, to ensure developers are given 
 access to all in house resources immediately upon being brought on to a project. You will 
-find that all of stat's projects, libraries, & all other resources, are wrapped up neatly in this repo 
+find that all of pageturnreviews projects, libraries, & all other resources, are wrapped up neatly in this repo 
 utilizing a common tree structures. Projects & libraries persist in the root directory, for all
 to access accordingly. Projects & Libraries can have sub projects or libraries nested inside as well. All 
 other resources live inside projects & libraries.
 
-## ETL
+## Projects
 
   - [API](./api/) - App business logic
   - [Client](./client/) - User Interface

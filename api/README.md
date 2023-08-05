@@ -1,0 +1,74 @@
+# API
+
+This api provides the business logic that interacts with the data stored in PostgreSQL. We're utilizing the REST api framework, providing routes for the client to work with.
+
+## Summary
+
+  - [Getting Started](#getting-started)
+  - [Authors](#authors)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
+  
+## Getting Started
+
+These instructions will get you a copy of the api up and running on
+your local machine for development and testing purposes.
+
+### Prerequisites
+
+  - [Node.js](https://nodejs.org/en/download/) - Javascript framework, used to compile
+    and run the api code
+  - [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) - Node 
+    package manager
+  - [MongoDB](https://www.mongodb.com/try/download/community/) - Database used for the 
+    ability to query large amounts of data
+
+### Environment Setup
+
+Step 1: Navigate to api directory
+
+    cd ./pageturnreviews/api
+
+Step 2: Create .env file
+
+    touch .env
+
+Step 3: Copy & Paste example into .env
+
+    ; Environment
+    NODE_ENV=localdev
+    PORT=3000
+    POSTGRESQL_URI=DATABASE_URL=postgresql://localhost:5432/page_turn_reviews
+    ; API
+    OPENAI_API_KEY=token
+
+Step 4: Install packages
+
+    npm install
+
+Step 5: Start development server
+
+    npm run serve
+
+Step 6: Build project
+
+    npm run build
+
+## Other Setups
+
+  - **Client** - [Setup](../client)
+
+## Authors
+
+  - **Joshua Phillips** - *Portfolio* -
+    [joshuadarron.com](https://joshuadarron.com/)
+
+## License
+
+This project is licensed under the [CC0 1.0 Universal](../LICENSE.md)
+Creative Commons License - see the [LICENSE.md](../LICENSE.md) file for
+details
+
+## Acknowledgments
+
+  - Hat tip to anyone whose code was used

@@ -25,18 +25,16 @@ your local machine for development and testing purposes.
 
 Step 1: Navigate to directory
 
-    cd ./stat/etl/client
+    cd ./stat/client
 
 Step 2: Create .env file
 
     touch .env
 
 Step 3: Copy & Paste example into .env
-    
+
     ; API
     VUE_APP_API_URL=http://127.0.0.1:3000
-    ; Frame bucket link
-    VUE_APP_BUCKET_URL=s3-amazon-bucket-url.com
 
 Step 4: Install packages
 
