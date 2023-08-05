@@ -1,0 +1,26 @@
+input {
+    border-radius: 20px !important;
+    border: 1px solid #212121 !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+    text-indent: 10px;
+    font-size: 15px !important;
+    overflow: visible !important;
+    height: 54px !important;
+}
+
+.btn-search {
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+    input {
+        height: 80px !important;
+        font-size: 20px !important;
+    }
+
+    .btn-search {
+        height: 80px;
+    }
+}

@@ -1,0 +1,47 @@
+.book {
+	min-height: 500px;
+}
+
+.image-container {
+    height: 200px;
+    width: 100%;
+}
+
+.info-container {
+    height: 100px;
+}
+
+.btn-container {
+    height: 200px;
+}
+
+.image-item {
+    max-height: 200px;
+    min-height: 150px;
+}
+
+.preloader-search {
+    margin-top: 50%;
+}
+
+.book-title {
+    font-size: 13px;
+}
+
+.book-author {
+    font-size: 11px;
+    color: #757575;
+}
+
+.btn-action {
+    margin-bottom: 10px;
+    width: 100%;
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-action {
+        margin-bottom: 20px;
+        height: 80px;
+    }
+}
