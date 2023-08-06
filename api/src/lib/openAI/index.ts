@@ -18,7 +18,7 @@ const intro: string = `
 
     Review should be at least 5 sentences long
     Rating must have a decimal place
-    Reason should be not more than 2 sentences
+    Reason should not be more than 2 sentences
 
     If you can't come up with a review, respond in the same JSON format.
     Use the review property to output your response.

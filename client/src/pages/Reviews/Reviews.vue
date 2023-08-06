@@ -126,8 +126,7 @@ export default {
                 this.bookId = id
                 await this.setup()
             },
-            deep: true,
-            immediate: true
+            deep: true
         }
     },
 
