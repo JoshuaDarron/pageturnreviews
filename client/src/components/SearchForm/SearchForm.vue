@@ -26,7 +26,7 @@
 <script>
 import Button from '../Button/Button.vue'
 
-import { mapActions, mapMutations } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
     name: 'SearchForm',
@@ -43,14 +43,17 @@ export default {
 
     methods: {
         ...mapActions(['googleBooksSearch']),
-        ...mapMutations(['setGoogleBooks']),
+        ...mapMutations(['setGoogleBooks', 'setGoogleSearch']),
 
         async handleSearch () {
             this.setGoogleBooks([])
             const query = this.search
+            this.setGoogleSearch(this.search)
             await this.googleBooksSearch(query)
         }
     },
+
+    computed: mapGetters(['googleSearch'])
 }
 </script>
 

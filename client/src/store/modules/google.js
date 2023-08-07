@@ -22,23 +22,39 @@ function asyncGoogleLookup (id) {
 const state = {
     googleBook: {},
     googleBooks: [],
-    relatedGoogleBooks: []
+    relatedGoogleBooks: [],
+    googleSearch: 'Best Sellers',
+    googleOffset: 0
 }
 
 const getters = {
     googleBook: state => state.googleBook,
     googleBooks: state => state.googleBooks,
-    relatedGoogleBooks: state => state.relatedGoogleBooks
+    relatedGoogleBooks: state => state.relatedGoogleBooks,
+    googleSearch: state => state.googleSearch,
+    googleOffset: state => state.googleOffset
 }
 
 const actions = {
-    async googleBooksSearch ({ commit }, query) {
-        const books = await asyncGoogleSearch(query, { limit: 18 })
-        commit('setGoogleBooks', books)
+    async googleBooksSearch ({ commit, getters }, query) {
+        const books = await asyncGoogleSearch(query, {
+            limit: 12,
+            offset: getters.googleOffset
+        })
+        const old = getters.googleBooks
+        // Make sure there are no duplicate
+        const filtered = books.filter(function(b) {
+            const some = old.some(function (o) {
+                return o.id === b.id
+            })
+            if (!some) return b
+        })
+        const updated = [...old, ...filtered]
+        commit('setGoogleBooks', updated)
     },
 
     async googleRelatedBooksSearch ({ commit }, query) {
-        const books = await asyncGoogleSearch(query, { limit: 18 })
+        const books = await asyncGoogleSearch(query)
         commit('setRelatedGoogleBooks', books)
     },
 
@@ -51,7 +67,9 @@ const actions = {
 const mutations = {
     setGoogleBook: (state, googleBook) => (state.googleBook = googleBook),
     setGoogleBooks: (state, googleBooks) => (state.googleBooks = googleBooks),
-    setRelatedGoogleBooks: (state, relatedGoogleBooks) => (state.relatedGoogleBooks = relatedGoogleBooks)
+    setRelatedGoogleBooks: (state, relatedGoogleBooks) => (state.relatedGoogleBooks = relatedGoogleBooks),
+    setGoogleSearch: (state, googleSearch) => (state.googleSearch = googleSearch),
+    setGoogleOffset: (state, googleOffset) => (state.googleOffset = googleOffset)
 }
 
 export default {

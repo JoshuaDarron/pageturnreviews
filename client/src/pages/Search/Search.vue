@@ -7,19 +7,22 @@
             <Loader />
         </span>
         <!-- List of books -->
-        <span v-else class="row">
-            <div v-for="book in googleBooks" :key="book.id" :ref="book.id">
-                <BookItem
-                    :id="book.id"
-                    :title="book.title"
-                    :authors="book.authors"
-                    :thumbnail="book.thumbnail"
-                />
+        <span v-else>
+            <div class="row">
+                <div v-for="book in googleBooks" :key="book.id" :ref="book.id">
+                    <BookItem
+                        :key="book.id"
+                        :id="book.id"
+                        :title="book.title"
+                        :authors="book.authors"
+                        :thumbnail="book.thumbnail"
+                    />
+                </div>
+            </div>
+            <div class="row center">
+                <a class="waves-effect btn-flat" @click="addOffset">More</a>
             </div>
         </span>
-        <!-- <div class="row center">
-            <a href="#">Load More</a>
-        </div> -->
     </div>
 </template>
 
@@ -29,7 +32,7 @@ import BookItem from '../../components/BookItem/BookItem.vue'
 import Loader from '../../components/Loader/Loader.vue'
 import SearchForm from '../../components/SearchForm/SearchForm.vue'
 // Store initializers
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
     name: 'Search',
@@ -40,23 +43,24 @@ export default {
         SearchForm
     },
 
-    data() {
-        return {
-            default: 'Best Sellers'
-        }
-    },
-
     async mounted () {
         if (!this.googleBooks.length) {
-            await this.googleBooksSearch(this.default)
+            await this.googleBooksSearch(this.googleSearch)
         }
     },
 
     methods: {
-        ...mapActions(['googleBooksSearch'])
+        ...mapActions(['googleBooksSearch']),
+        ...mapMutations(['setGoogleOffset']),
+
+        async addOffset () {     
+            const add = 12
+            this.setGoogleOffset(this.googleOffset + add)
+            await this.googleBooksSearch(this.googleSearch)
+        }
     },
 
-    computed: mapGetters(['googleBooks'])
+    computed: mapGetters(['googleBooks', 'googleSearch', 'googleOffset'])
 }
 </script>
 
