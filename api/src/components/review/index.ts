@@ -10,12 +10,6 @@ type Review = {
 }
 
 class Reviews {
-    db: Knex<any, unknown[]>;
-
-    constructor (db: Knex<any, unknown[]>) {
-        this.db = db;
-    }
-
     async findAll (title: string, authors: string): Promise<Review> {
         return db('reviews')
             .select({
@@ -25,4 +19,4 @@ class Reviews {
     }
 }
 
-export default new Reviews(db);
+export default new Reviews();
