@@ -9,8 +9,8 @@ exports.up = function(knex) {
             title TEXT,
             authors TEXT,
             review TEXT,
-            rating REAL,
-            reason TEXT
+            reason TEXT,
+            rating REAL
         );
     `);
 };

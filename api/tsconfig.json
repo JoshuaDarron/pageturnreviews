@@ -17,11 +17,12 @@
     /* Type Checking */
     "strict": true,                                      /* Enable all strict type-checking options. */
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
+    "allowJs": true
   },
   "include": [
     "src/**/*.ts"
-, "src/config.js", "config/config.ts", "src/db/knexfile.js"  ],
+, "src/config.js", "config/config.ts", "src/db/knexfile.js", "src/db/db.ts"  ],
   "exclude": [
     "node_modules"
   ]
