@@ -1,5 +1,6 @@
 import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from "openai";
 import { callout } from "../../utils/helpers";
+import { ReviewTypes, Review } from "../../components/review/types";
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -29,13 +30,6 @@ type History = [
     string | undefined
 ];
 
-type Review = {
-    type: string
-    review: string
-    rating: number
-    reason: string
-}
-
 const history: History[] = [];
 // Handle all requests after initialization
 // using the historical context
@@ -57,7 +51,7 @@ export async function openAIChat (content: string): Promise<Review> {
 
     history.push([content, completionString]);
     const res = JSON.parse(completionString);
-    res.type = 'ChatGPT';
+    res.type = ReviewTypes.ChatGPT;
 
     return res;
 };

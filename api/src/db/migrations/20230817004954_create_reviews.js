@@ -10,7 +10,8 @@ exports.up = function(knex) {
             authors TEXT,
             review TEXT,
             reason TEXT,
-            rating REAL
+            rating REAL,
+            type TEXT
         );
     `);
 };

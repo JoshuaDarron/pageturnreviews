@@ -3,7 +3,6 @@
         <span v-if="!googleBook">
             <Loader />
         </span>
-
         <span v-else>
             <BookInfo
                 :id="googleBook.id"
@@ -15,7 +14,14 @@
             />
 
             <h5>Reviews</h5>
-            <span v-if="!reviews.length">
+            <span v-if="error">
+                <blockquote>
+                    Something went wrong.
+                    Please try again later.
+                </blockquote>
+                
+            </span>
+            <span v-else-if="!reviews.length">
                 <div class="progress blue lighten-4 reviews-loader">
                     <div class="indeterminate blue"></div>
                 </div>
@@ -35,16 +41,18 @@
                     />
                 </div>
             </div>
-
         </span>
+
     </div>
 </template>
 
 <script>
+import M from 'materialize-css'
 import BookInfo from '../../components/BookInfo/BookInfo.vue'
 import BookItem from '../../components/BookItem/BookItem.vue'
 import BookReview from '../../components/BookReview/BookReview.vue'
 import Loader from '../../components/Loader/Loader.vue'
+import callout from '../../utils/helpers'
 
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 
@@ -61,7 +69,8 @@ export default {
     data() {
         return {
             bookId: '',
-            filteredBooks: []
+            filteredBooks: [],
+            error: false
         }
     },
 
@@ -102,10 +111,16 @@ export default {
         },
 
         async handleReviews () {
-            await this.getReviews({
+            const [err] = await callout(this.getReviews({
                 title: this.googleBook.title,
                 authors: this.googleBook.authors
-            })
+            }))
+            if (err) {
+                this.error = true
+                M.toast({ html: 'Something went wrong', classes: 'rounded red accent-2', displayLength: 5000 })
+            } else {
+                this.error = false
+            }
         },
 
         async setup () {

@@ -1,3 +1,7 @@
 .reviews-loader {
     margin-bottom: 75px;
 }
+
+blockquote{
+    border-color: #ff5252 ; /* Just change the color value and that's it*/
+}
