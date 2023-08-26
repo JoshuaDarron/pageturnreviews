@@ -3,6 +3,7 @@ import knex from '../../db/db';
 import Books from '../books/';
 // Types
 import { Review } from './types';
+import { Book } from '../books/types';
 // Libs
 import { openAIChat } from '../../lib/openAI';
 
@@ -19,14 +20,15 @@ class Reviews {
         return id;
     }
 
-    async reviewBook (title: string, authors: string) {
+    async reviewBook (book: Book) {
+        const { title, authors } = book;
         const message = `${title} By: ${authors}`;
         // Get a book
-        let book = await Books.findOne({ title, authors });
-        if (!book) {
-            book = await Books.create({ title, authors });
+        let dbBook = await Books.findOne({ title, authors });
+        if (!dbBook) {
+            dbBook = await Books.create({ title, authors });
         }
-        const bookID = book.id;
+        const bookID = dbBook.id;
         // Check db for instance
         const storedReview = await this.findOne(bookID);
         // If it doesn't exist, create it from chatGPT

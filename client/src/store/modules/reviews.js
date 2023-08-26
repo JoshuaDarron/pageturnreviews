@@ -13,7 +13,7 @@ const getters = {
 const actions = {
     async getReviews ({ commit }, { title, authors }) {
         const titleQuery = `title=${title.split(' ').join('%20')}`
-        const authorQuery = `author=${authors.map(a => a.split(' ').join('%20')).join(',')}`
+        const authorQuery = `authors=${authors.map(a => a.split(' ').join('%20')).join(',')}`
         const reviews = await axios.get(`${url}?${titleQuery}&${authorQuery}`)
         commit('setReviews', reviews.data)
     }
