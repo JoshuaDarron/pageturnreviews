@@ -15,12 +15,12 @@
             <div class="row">
                 <div class="col m12">
                     <h6>Rating</h6>
-                    <p>{{review.rating}}</p>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
+                    <star-rating
+                        v-model="review.rating"
+                        v-bind:increment="0.1"
+                        active-color="#212121"
+                        star-size="25"
+                        read-only="true" />
                     <p>
                         {{review.reason}}
                     </p>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 import Button from '../Button/Button.vue'
 
 const reviewers = [{
@@ -58,7 +59,8 @@ export default {
     name: 'BookReview',
 
     components: {
-        Button
+        Button,
+        StarRating
     },
 
     props: {
