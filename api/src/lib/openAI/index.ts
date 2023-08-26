@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from "openai";
 import { callout } from "../../utils/helpers";
-import { ReviewTypes, Review } from "../../components/review/types";
+import { ReviewTypes, Review } from "../../components/reviews/types";
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -9,12 +9,12 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const model: string = 'gpt-3.5-turbo';
+const model: string = 'gpt-3.5-turbo-16k-0613';
 
 const intro: string = `
     When reviewing books respond with a JSON object with the following fields
     - review: string
-    - rating: float (5 highest and 1 lowest)
+    - rating: float (5 being best book ever and 1 being the worst you've ever read)
     - reason: string
 
     Review should be at least 5 sentences long

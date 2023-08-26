@@ -5,8 +5,7 @@ export enum ReviewTypes {
 }
 
 export type Review = {
-    title?: string,
-    authors?: string,
+    book_id: string,
     review: string,
     reason: string,
     rating: number,

@@ -8,16 +8,16 @@
             "request": "launch",
             "name": "UI:Chrome - Debug",
             "url": "http://localhost:8081",
-            "webRoot": "${workspaceFolder}/etl/client/src",
+            "webRoot": "${workspaceFolder}/client/src",
             "sourceMapPathOverrides": {
-                "webpack:///src/*": "${webRoot}/etl/client/*"
+                "webpack:///src/*": "${webRoot}/client/*"
             }
         },
         {
             "type": "node",
             "request": "launch",
             "name": "UI:Server - Debug",
-            "cwd": "${workspaceFolder}/etl/client",
+            "cwd": "${workspaceFolder}/client",
             "runtimeExecutable": "npm",
             "runtimeArgs": ["run-script", "serve"],
             "console": "externalTerminal"
@@ -26,58 +26,22 @@
             "type": "node",
             "request": "launch",
             "name": "API:Dev - Debug",
-            "cwd": "${workspaceFolder}/etl/api",
+            "cwd": "${workspaceFolder}/api",
             "runtimeExecutable": "npm",
-            "runtimeArgs": ["run-script", "dev"],
+            "runtimeArgs": ["run-script", "start"],
             "console": "externalTerminal",
             "skipFiles": [
-                "${workspaceFolder}/etl/api/node_modules/**/*.js",
+                "${workspaceFolder}/api/node_modules/**/*.js",
                 "<node_internals>/**/*.js"
             ]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Harvester:Server - Debug",
-            "program": "${workspaceFolder}/etl/harvester/src/bin",
-            "cwd": "${workspaceFolder}/etl/harvester",
-            "console": "externalTerminal",
-            "skipFiles": [
-                "${workspaceFolder}/etl/harvester/node_modules/**/*.js",
-                "<node_internals>/**/*.js"
-            ]
-        },
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Mocha:Tests - All",
-			"program": "${workspaceRoot}/etl/api/node_modules/.bin/mocha",
-			"args": [
-				"${workspaceRoot}/etl/api/src/api/components/**/tests.js",
-				"--exit",
-				"--timeout",
-                "5000"
-			],
-            "internalConsoleOptions": "openOnSessionStart",
-            "skipFiles": [
-                "<node_internals>/**"
-            ]
-		}
+        }
     ],
     "compounds": [
-        {
-            "name": "API & Client - Debug",
-            "configurations": [
-                "API:Dev - Debug",
-                "UI:Server - Debug"
-            ]
-        },
         {
             "name": "All modules - Debug",
             "configurations": [
                 "API:Dev - Debug",
-                "UI:Server - Debug",
-                "Harvester:Server - Debug"
+                "UI:Server - Debug"
             ]
         }
     ]

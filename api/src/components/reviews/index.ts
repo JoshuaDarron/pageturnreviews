@@ -1,15 +1,16 @@
 // Modules
 import knex from '../../db/db';
+import Books from '../books/';
 // Types
 import { Review } from './types';
 // Libs
 import { openAIChat } from '../../lib/openAI';
 
 class Reviews {
-    async findOne (title: string, authors: string): Promise<any> {
+    async findOne (bookID: string): Promise<any> {
         const [review] = await knex('reviews')
             .select('review', 'reason', 'rating', 'type')
-            .where({ title, authors });
+            .where({ book_id: bookID });
         return review;
     }
 
@@ -19,20 +20,22 @@ class Reviews {
 
     async reviewBook (title: string, authors: string) {
         const message = `${title} By: ${authors}`;
+        // Get a book
+        let book = await Books.findOne({ title, authors });
+        if (!book) {
+            book = await Books.create({ title, authors });
+        }
+        const bookID = book.id;
         // Check db for instance
-        const storedReview = await this.findOne(`${title}`, `${authors}`);
+        const storedReview = await this.findOne(bookID);
         // If it doesn't exist, create it from chatGPT
         if (!storedReview) {
             // Make a request to the ChatGPT API
             const botReview = await openAIChat(message);
             // Create review in db
             await this.create({
-                title,
-                authors,
-                review: botReview.review,
-                reason: botReview.reason,
-                rating: botReview.rating,
-                type: botReview.type
+                ...botReview,
+                book_id: bookID
             });
             // Return the result from Bot
             return [botReview];

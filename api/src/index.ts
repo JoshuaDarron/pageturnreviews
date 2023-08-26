@@ -6,7 +6,7 @@ import cors from 'cors';
 import { callout } from './utils/helpers';
 import { APIError } from './utils/apiError';
 // Components
-import Reviews from './components/review';
+import Reviews from './components/reviews';
 // PORT number to listen too
 const PORT = process.env.PORT || 8000;
 // Create app
