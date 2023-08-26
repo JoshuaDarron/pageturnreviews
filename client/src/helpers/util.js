@@ -1,5 +1,5 @@
 class Util {
-    static async callout(promise) {
+    static async Callout(promise) {
         return promise
             .then(data => [null, data])
             .catch(err => [err])

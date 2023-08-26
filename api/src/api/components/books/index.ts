@@ -2,8 +2,6 @@
 import _ from 'lodash';
 // Modules
 import knex from '../../db/db';
-// Types
-import { Book } from './types';
 
 class Books {
     async findOne (book: { title: string, authors: string }): Promise<any> {

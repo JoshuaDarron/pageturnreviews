@@ -14,8 +14,9 @@ class Reviews {
         return review;
     }
 
-    async create (review: Review): Promise<Review> {
-        return knex('reviews').insert(review);
+    async create (review: Review): Promise<any> {
+        const [id] = await knex('reviews').insert(review).returning('id');
+        return id;
     }
 
     async reviewBook (title: string, authors: string) {
@@ -44,7 +45,8 @@ class Reviews {
         return [{
             review: storedReview.review,
             rating: storedReview.rating,
-            reason: storedReview.reason
+            reason: storedReview.reason,
+            type: storedReview.type
         }];
     }
 }

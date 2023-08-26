@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from "openai";
-import { callout } from "../../utils/helpers";
+import { Callout } from "../../utils/helpers";
 import { ReviewTypes, Review } from "../../components/reviews/types";
 
 const configuration = new Configuration({
@@ -62,7 +62,7 @@ export async function openAIChat (content: string): Promise<Review> {
         { role: "user", content: intro }
     ];
 
-    const [err, completion] = await callout(openai.createChatCompletion({
+    const [err, completion] = await Callout(openai.createChatCompletion({
         model,
         messages
     }));
