@@ -43,12 +43,6 @@ export default {
         SearchForm
     },
 
-    async mounted () {
-        if (!this.googleBooks.length) {
-            await this.googleBooksSearch(this.googleSearch)
-        }
-    },
-
     methods: {
         ...mapActions(['googleBooksSearch']),
         ...mapMutations(['setGoogleOffset']),

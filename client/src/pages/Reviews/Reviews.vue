@@ -117,7 +117,7 @@ export default {
             }))
             if (err) {
                 this.error = true
-                M.toast({ html: 'Something went wrong', classes: 'rounded red accent-2', displayLength: 5000 })
+                M.toast({ html: 'Something went wrong', classes: 'red accent-2', displayLength: 5000 })
             } else {
                 this.error = false
             }

@@ -4,7 +4,7 @@ import { ReviewTypes, Review } from "../../components/reviews/types";
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
-    basePath: 'https://api.openai.com/v1'
+    basePath: process.env.OPENAI_API_PATH
 });
 
 const openai = new OpenAIApi(configuration);
@@ -14,11 +14,11 @@ const model: string = 'gpt-3.5-turbo-16k-0613';
 const intro: string = `
     When reviewing books respond with a JSON object with the following fields
     - review: string
-    - rating: float (5 being best book ever and 1 being the worst you've ever read)
+    - rating: float (5.0 being highest and 0 being lowest)
     - reason: string
 
     Review should be at least 5 sentences long
-    Rating must have a decimal place
+    Rating must have a decimal place. Average the rating based on other user reviews. 
     Reason should not be more than 2 sentences
 
     If you can't come up with a review, respond in the same JSON format.
@@ -34,6 +34,8 @@ const history: History[] = [];
 // Handle all requests after initialization
 // using the historical context
 export async function openAIChat (content: string): Promise<Review> {
+    if (!history.length) await initChatGPT();
+
     const messages: ChatCompletionRequestMessage[] = [];
 
     messages.push(
@@ -57,7 +59,7 @@ export async function openAIChat (content: string): Promise<Review> {
 };
 
 // Initialize the conversation when the server starts
-(async function (): Promise<void> {
+async function initChatGPT (): Promise<void> {
     const messages: ChatCompletionRequestMessage[] = [
         { role: "user", content: intro }
     ];
@@ -72,5 +74,5 @@ export async function openAIChat (content: string): Promise<Review> {
     }
 
     history.push([intro, completion?.data?.choices[0].message?.content]);
-    console.info('ChatGPT: Loaded');
-})();
+    console.info('\nChatGPT: Initialized');
+};

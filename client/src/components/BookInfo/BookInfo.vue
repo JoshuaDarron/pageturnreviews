@@ -8,7 +8,7 @@
                     color="blue"
                 />
             </router-link>
-            <img class="image-review" :src="thumbnail" @load="handleImageLoad">
+            <img class="image-review" :src="thumbnail">
             <a
                 :href="
                     title && authors ?
@@ -69,10 +69,6 @@ export default {
     },
 
     methods: {
-        handleImageLoad () {
-            this.$emit('show-info')
-        },
-
         removeHtmlTags(str) {
             // Replace HTML tags with an empty string
             return str.replace(/<[^>]*>/g, '');

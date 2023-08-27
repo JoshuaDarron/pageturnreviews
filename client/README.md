@@ -36,6 +36,8 @@ Step 3: Copy & Paste example into .env
     ; API
     VUE_APP_API_URL=http://127.0.0.1:3000
 
+Note: Do not add a / to the end of the URL
+
 Step 4: Install packages
 
     npm install

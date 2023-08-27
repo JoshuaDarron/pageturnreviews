@@ -19,8 +19,8 @@
                         v-model="review.rating"
                         v-bind:increment="0.1"
                         active-color="#212121"
-                        star-size="25"
-                        read-only="true" />
+                        :star-size="25"
+                        :read-only="true" />
                     <p>
                         {{review.reason}}
                     </p>

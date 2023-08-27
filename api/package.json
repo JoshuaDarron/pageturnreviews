@@ -9,8 +9,8 @@
     "serve": "concurrently \"npx tsc -w\" \"nodemon ./dist/app.js\"",
     "prestart": "npm run build",
     "preserve": "npm run build",
-    "migrate:up": "knex migrate:up --knexfile ./src/db/knexfile.js",
-    "migrate:down": "knex migrate:down --knexfile ./src/db/knexfile.js"
+    "migrate:up": "knex migrate:up --knexfile ./src/api/db/knexfile.js",
+    "migrate:down": "knex migrate:down --knexfile ./src/api/db/knexfile.js"
   },
   "keywords": [],
   "author": "",

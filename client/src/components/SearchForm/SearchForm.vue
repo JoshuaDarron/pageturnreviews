@@ -41,15 +41,24 @@ export default {
         }
     },
 
+    mounted () {
+        this.search = this.googleSearch
+        this.$root.$on('reset-search', this.resetSearch)
+    },
+
     methods: {
         ...mapActions(['googleBooksSearch']),
         ...mapMutations(['setGoogleBooks', 'setGoogleSearch']),
 
+        resetSearch () {
+            this.search = ''
+            this.setGoogleSearch(this.search)
+        },
+
         async handleSearch () {
             this.setGoogleBooks([])
-            const query = this.search
             this.setGoogleSearch(this.search)
-            await this.googleBooksSearch(query)
+            await this.googleBooksSearch(this.search)
         }
     },
 

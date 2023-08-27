@@ -23,7 +23,7 @@ const state = {
     googleBook: {},
     googleBooks: [],
     relatedGoogleBooks: [],
-    googleSearch: 'Best Sellers',
+    googleSearch: '',
     googleOffset: 0
 }
 
