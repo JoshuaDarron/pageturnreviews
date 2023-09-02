@@ -1,3 +1,4 @@
+import 'colors';
 console.log(`
 ██████╗  █████╗  ██████╗ ███████╗    ████████╗██╗   ██╗██████╗ ███╗   ██╗    ██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗███████╗
 ██╔══██╗██╔══██╗██╔════╝ ██╔════╝    ╚══██╔══╝██║   ██║██╔══██╗████╗  ██║    ██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║██╔════╝
@@ -11,7 +12,7 @@ import 'dotenv/config';
 import express, { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 // Utilities
-import { APIError } from './api/utils/';
+import { APIError, log } from './api/utils/';
 // Components
 import routes from './api/router/router';
 // PORT number to listen too
@@ -38,5 +39,5 @@ app.use((err: APIError, req: Request, res: Response, next: NextFunction) => {
 });
 // Start server listening on PORT number
 app.listen(PORT, function () {
-    console.log(`PORT: ${PORT}`);
+    log(`PORT: ${PORT}`);
 });

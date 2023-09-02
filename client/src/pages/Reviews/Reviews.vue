@@ -52,7 +52,7 @@ import BookInfo from '../../components/BookInfo/BookInfo.vue'
 import BookItem from '../../components/BookItem/BookItem.vue'
 import BookReview from '../../components/BookReview/BookReview.vue'
 import Loader from '../../components/Loader/Loader.vue'
-import Callout from '../../utils/helpers'
+import callout from '../../utils/helpers'
 
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 
@@ -111,7 +111,7 @@ export default {
         },
 
         async handleReviews () {
-            const [err] = await Callout(this.getReviews({
+            const [err] = await callout(this.getReviews({
                 title: this.googleBook.title,
                 authors: this.googleBook.authors
             }))

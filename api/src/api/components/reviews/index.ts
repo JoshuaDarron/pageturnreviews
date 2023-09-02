@@ -5,22 +5,53 @@ import Books from '../books/';
 import { Review } from './types';
 import { Book } from '../books/types';
 // Libs
-import { openAIChat } from '../../lib/openAI';
-
+import OpenAI from '../../lib/openAI';
+// Class representing Reviews
 class Reviews {
+    /**
+     * Find one review for a bookID in the database
+     * 
+     * @param {string} bookID - ID of the book we'd like reviews on
+     *
+     * @return {Promise<any>} Promise that resolves a review
+     *
+     * @example
+     *
+     *     await findOne(bookID);
+     */
     async findOne (bookID: string): Promise<any> {
         const [review] = await knex('reviews')
             .select('review', 'reason', 'rating', 'type')
             .where({ book_id: bookID });
         return review;
     }
-
+    /**
+     * Create a book review in the database
+     * 
+     * @param {Review} review - Review to create
+     *
+     * @return {Promise<Review>} Promise that resolves a review ID
+     *
+     * @example
+     *
+     *     await create(review);
+     */
     async create (review: Review): Promise<any> {
         const [id] = await knex('reviews').insert(review).returning('id');
         return id;
     }
-
-    async reviewBook (book: Book) {
+    /**
+     * Handle all either the creation of review from bot, or fetching from database
+     * 
+     * @param {Book} book - Book to review
+     *
+     * @return {Promise<[any]>} Promise that resolves a list reviews
+     *
+     * @example
+     *
+     *     await reviewBook(book);
+     */
+    async reviewBook (book: Book): Promise<[any]> {
         const { title, authors } = book;
         const message = `${title} By: ${authors}`;
         // Get a book
@@ -33,8 +64,8 @@ class Reviews {
         const storedReview = await this.findOne(bookID);
         // If it doesn't exist, create it from chatGPT
         if (!storedReview) {
-            // Make a request to the ChatGPT API
-            const botReview = await openAIChat(message);
+            // Make a request to the OpenAI API
+            const botReview = await OpenAI.chat(message);
             // Create review in db
             await this.create({
                 ...botReview,
@@ -52,5 +83,5 @@ class Reviews {
         }];
     }
 }
-
+// Expose Reviews Class
 export default new Reviews();

@@ -24,6 +24,7 @@ const state = {
     googleBooks: [],
     relatedGoogleBooks: [],
     googleSearch: '',
+    googleSearchDefault: 'new york times best sellers',
     googleOffset: 0
 }
 
@@ -32,12 +33,13 @@ const getters = {
     googleBooks: state => state.googleBooks,
     relatedGoogleBooks: state => state.relatedGoogleBooks,
     googleSearch: state => state.googleSearch,
+    googleSearchDefault: state => state.googleSearchDefault,
     googleOffset: state => state.googleOffset
 }
 
 const actions = {
     async googleBooksSearch ({ commit, getters }, query) {
-        const books = await asyncGoogleSearch(query, {
+        const books = await asyncGoogleSearch(query ?? getters.googleSearchDefault, {
             limit: 12,
             offset: getters.googleOffset
         })

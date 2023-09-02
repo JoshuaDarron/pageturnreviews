@@ -50,11 +50,15 @@ export default {
         async addOffset () {     
             const add = 12
             this.setGoogleOffset(this.googleOffset + add)
-            await this.googleBooksSearch(this.googleSearch)
+            if (this.googleSearch.length) {
+                await this.googleBooksSearch(this.googleSearch)
+            } else {
+                await this.googleBooksSearch()
+            }
         }
     },
 
-    computed: mapGetters(['googleBooks', 'googleSearch', 'googleOffset'])
+    computed: mapGetters(['googleBooks', 'googleSearch', 'googleOffset', 'googleSearchDefault'])
 }
 </script>
 

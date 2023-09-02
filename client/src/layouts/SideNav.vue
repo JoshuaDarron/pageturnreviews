@@ -40,7 +40,7 @@
                         <li>
                             <div class="divider"></div>
                         </li>
-                        <li><a href = "mailto: phillips@joshuadarron.com"><i class="material-icons">contact_support</i>Contact</a></li>
+                        <li class="bottom"><a href = "mailto: phillips@joshuadarron.com"><i class="material-icons">contact_support</i>Contact</a></li>
                     </ul>
                 </div>
                 <div class="col s12 m8 l9 xl10">
@@ -53,7 +53,7 @@
 
 <script>
 import M from 'materialize-css'
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 
 const categories = [
     "Art",
@@ -86,7 +86,6 @@ export default {
     data () {
         return {
             categories,
-            default: 'new york times best sellers',
             selected: [],
         }
     },
@@ -97,8 +96,7 @@ export default {
         // This mounts at the top level, and doesn't remount as
         // often as Search. So we load the defaults here, and
         // handle search within that page.
-        await this.googleBooksSearch(this.default)
-        await this.setGoogleSearch(this.default)
+        await this.googleBooksSearch()
         // Css initialization
         const sideNavsLinks = document.querySelectorAll('.sidenav-links')
         M.Sidenav.init(sideNavsLinks, undefined, undefined)
@@ -106,7 +104,7 @@ export default {
 
     methods: {
         ...mapActions(['googleBooksSearch']),
-        ...mapMutations(['setGoogleBooks', 'setGoogleSearch']),
+        ...mapMutations(['setGoogleBooks']),
         
         async handleCheckboxChange(event) {
             this.$root.$emit('reset-search')
@@ -131,13 +129,14 @@ export default {
             if (this.selected.length) {
                 query = this.selected.join(', ')
             } else {
-                query = this.default
+                query = this.googleSearchDefault
             }
 
-            await this.setGoogleSearch(query)
             await this.googleBooksSearch(query)
         }
-    }
+    },
+
+    computed: mapGetters('googleSearchDefault')
 }
 </script>
 
