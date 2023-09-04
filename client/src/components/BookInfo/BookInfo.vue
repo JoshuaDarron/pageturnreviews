@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col s12 l4 center">
+        <div class="book-img">
             <router-link to="/">
                 <Button
                     text="Back"
@@ -24,7 +24,7 @@
                 />
             </a>
         </div>
-        <div class="col s12 l8">
+        <div class="book-text">
             <h4>{{ title }}</h4>
             <!-- Depends on how many authors there are -->
             <h6>{{ authors?.length > 1

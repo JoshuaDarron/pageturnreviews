@@ -14,7 +14,27 @@
     margin-bottom: 20px;
 }
 
+.book-text {
+    padding: 0 1rem;
+}
 
+.book-img {
+    text-align: center;
+}
+
+@media only screen and (min-width: 993px) {
+    .image-review {
+        width: 200px;
+    }
+
+    .book-img {
+        width: 33.3333333333%;
+        margin: 0 20px 20px 20px;
+        float: left;
+        left: auto;
+        right: auto;
+    }
+}
 
 @media only screen and (min-width: 601px) and (max-width: 992px) {
     .image-review {
