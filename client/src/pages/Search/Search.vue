@@ -23,6 +23,12 @@
                 <a class="waves-effect btn-flat" @click="addOffset">More</a>
             </div>
         </span>
+        <!-- Contact Button -->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large blue waves-effect waves-light" href="mailto: phillips@joshuadarron.com">
+                <i class="large material-icons">contact_support</i>
+            </a>
+        </div>
     </div>
 </template>
 
