@@ -37,10 +37,6 @@
                                 <span>{{ category }}</span>
                             </label>
                         </li>
-                        <li>
-                            <div class="divider"></div>
-                        </li>
-                        <li class="bottom"><a href = "mailto: phillips@joshuadarron.com"><i class="material-icons">contact_support</i>Contact</a></li>
                     </ul>
                 </div>
                 <div class="col s12 m8 l9 xl10">

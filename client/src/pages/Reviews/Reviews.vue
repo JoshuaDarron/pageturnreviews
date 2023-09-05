@@ -116,8 +116,19 @@ export default {
                 authors: this.googleBook.authors
             }))
             if (err) {
+                // Clear previous error toast
+                const toastElement = document.querySelector('.toast')
+                if (toastElement) {
+                    const toastInstance = M.Toast.getInstance(toastElement)
+                    toastInstance.dismiss()
+                }
+                // Handle new error toast
                 this.error = true
-                M.toast({ html: 'Something went wrong', classes: 'red accent-2', displayLength: 5000 })
+                M.toast({
+                    html: 'Something went wrong',
+                    classes: 'toast red accent-2',
+                    displayLength: 5000
+                })
             } else {
                 this.error = false
             }

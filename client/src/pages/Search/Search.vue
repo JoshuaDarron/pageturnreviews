@@ -25,7 +25,12 @@
         </span>
         <!-- Contact Button -->
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large blue waves-effect waves-light" href="mailto: phillips@joshuadarron.com">
+            <a
+                class="btn-floating btn-large blue waves-effect waves-light tooltipped"
+                href="mailto: phillips@joshuadarron.com"
+                data-position="top"
+                data-tooltip="Contact"
+            >
                 <i class="large material-icons">contact_support</i>
             </a>
         </div>
@@ -33,6 +38,8 @@
 </template>
 
 <script>
+// Packages
+import M from 'materialize-css'
 // Components
 import BookItem from '../../components/BookItem/BookItem.vue'
 import Loader from '../../components/Loader/Loader.vue'
@@ -47,6 +54,12 @@ export default {
         BookItem,
         Loader,
         SearchForm
+    },
+
+    mounted () {
+        // CSS INITIALIZATION
+        const tt = document.querySelectorAll('.tooltipped')
+        M.Tooltip.init(tt, undefined, undefined)
     },
 
     methods: {
