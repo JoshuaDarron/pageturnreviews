@@ -16,7 +16,7 @@ import { APIError, log } from './api/utils/';
 // Components
 import routes from './api/router/router';
 // PORT number to listen too
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 // Create app
 const app: Express = express();
 app.use(cors());

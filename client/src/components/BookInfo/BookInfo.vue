@@ -24,7 +24,7 @@
                 />
             </a>
         </div>
-        <div class="book-text">
+        <div>
             <h4>{{ title }}</h4>
             <!-- Depends on how many authors there are -->
             <h6>{{ authors?.length > 1

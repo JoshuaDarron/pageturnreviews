@@ -14,21 +14,13 @@
     margin-bottom: 20px;
 }
 
-.book-text {
-    padding: 0 1rem;
-}
-
-/* .book-img {
-    text-align: center;
-} */
-
 @media only screen and (min-width: 993px) {
     .image-review {
         width: 200px;
     }
 
     .book-img {
-        margin: 0 20px 20px 20px;
+        margin: 0 20px 20px 0;
         float: left;
         left: auto;
         right: auto;

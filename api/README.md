@@ -38,19 +38,26 @@ Step 3: Copy & Paste example into .env
     ; Environment
     NODE_ENV=localdev
     PORT=3000
-    POSTGRESQL_URI=DATABASE_URL=postgresql://localhost:5432/page_turn_reviews
-    ; API
+    ; OpenAI
     OPENAI_API_KEY=token
+    ; DB
+    DB_NAME=page_turn_reviews
+    DB_USER=postgres
+    DB_PASSWORD=password
 
 Step 4: Install packages
 
     npm install
 
-Step 5: Start development server
+Step 5: Initialize database tables
+
+    npm run migrate:up
+
+Step 6: Start development server
 
     npm run serve
 
-Step 6: Build project
+Step 7: Build project
 
     npm run build
 
