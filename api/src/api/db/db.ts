@@ -1,5 +1,6 @@
 import { knex } from 'knex';
-import knexfile from './knexfile';
+// Using JS to import non module
+const knexfile = require('./knexfile');
 
 const db = knex(knexfile.development);
 

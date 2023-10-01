@@ -21,8 +21,10 @@
     "allowJs": true
   },
   "include": [
-    "src/**/*.ts"
-, "src/config.js", "config/config.ts", "src/db/knexfile.js", "src/db/db.ts"  ],
+    "src/**/*.ts",
+    "src/api/db/knexfile.js",
+    "src/api/db/db.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

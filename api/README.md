@@ -41,6 +41,8 @@ Step 3: Copy & Paste example into .env
     ; OpenAI
     OPENAI_API_KEY=token
     ; DB
+    DB_DIALECT=postgresql
+    DB_HOST=127.0.0.1
     DB_NAME=page_turn_reviews
     DB_USER=postgres
     DB_PASSWORD=password
