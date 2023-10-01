@@ -36,7 +36,7 @@ Step 2: Create .env file
 Step 3: Copy & Paste example into .env
 
     ; Environment
-    NODE_ENV=localdev
+    NODE_ENV=development | production
     PORT=3000
     ; OpenAI
     OPENAI_API_KEY=token

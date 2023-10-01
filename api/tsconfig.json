@@ -22,7 +22,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/api/db/knexfile.js",
+    "src/api/db/knexfile.ts",
     "src/api/db/db.ts"
   ],
   "exclude": [
