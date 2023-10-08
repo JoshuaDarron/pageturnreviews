@@ -1,8 +1,11 @@
 {
     "version": "0.0.0",
     "configurations": [
+		/**
+			Chrome
+		*/
         {
-            // Note: Make sure to run client dev server before
+            // Note: Make sure to run ui server before
             // trying to connct to it in the vscode chrome debugger
             "type": "chrome",
             "request": "launch",
@@ -10,26 +13,30 @@
             "url": "http://localhost:8081",
             "webRoot": "${workspaceFolder}/client/src",
             "sourceMapPathOverrides": {
-                "webpack:///src/*": "${webRoot}/client/*"
+                "webpack:///./src/*": "${webRoot}/*",
+                "webpack:///src/*": "${webRoot}/*"
             }
         },
+		/**
+			Client
+		*/
         {
             "type": "node",
             "request": "launch",
             "name": "UI:Server - Debug",
             "cwd": "${workspaceFolder}/client",
             "runtimeExecutable": "npm",
-            "runtimeArgs": ["run-script", "serve"],
-            "console": "externalTerminal"
+            "runtimeArgs": ["run-script", "serve"]
         },
+		/**
+			API
+		*/
         {
             "type": "node",
             "request": "launch",
             "name": "API:Dev - Debug",
-            "cwd": "${workspaceFolder}/api",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run-script", "start"],
-            "console": "externalTerminal",
+            "program": "${workspaceFolder}/api/src/app.ts",
+            "cwd": "${workspaceFolder}/api/dist",
             "skipFiles": [
                 "${workspaceFolder}/api/node_modules/**/*.js",
                 "<node_internals>/**/*.js"
@@ -38,7 +45,7 @@
     ],
     "compounds": [
         {
-            "name": "All modules - Debug",
+            "name": "All Modules - Debug",
             "configurations": [
                 "API:Dev - Debug",
                 "UI:Server - Debug"

@@ -18,7 +18,8 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
     /* Completeness */
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
-    "allowJs": true
+    "allowJs": true,
+    "sourceMap": true
   },
   "include": [
     "src/**/*.ts",

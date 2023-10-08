@@ -5,7 +5,7 @@ import router from '../../router';
 // Components
 import Reviews from './';
 // Helpers
-import { APIError, callout} from '../../utils';
+import { APIError, callout } from '../../utils';
 // Review GET route
 router.get('/review', async (req: Request, res: Response, next: NextFunction) => {
     const { title, authors } = _.pick(req.query, 'title', 'authors');
