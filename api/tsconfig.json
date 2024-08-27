@@ -4,6 +4,7 @@
     "target": "ES2018",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
+    "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     // "paths": {
     //   "@config": [
     //     "config/config.ts"
@@ -11,6 +12,7 @@
     // },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
     /* Emit */
     "outDir": "./dist",                                  /* Specify an output folder for all emitted files. */
+    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
     // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */

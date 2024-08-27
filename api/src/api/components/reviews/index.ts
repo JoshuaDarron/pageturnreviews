@@ -61,7 +61,7 @@ class Reviews {
         }
         const bookID = dbBook.id;
         // Check db for instance
-        const storedReview = await this.findOne(bookID);
+        const storedReview = await this.findOne(bookID as string);
         // If it doesn't exist, create it from chatGPT
         if (!storedReview) {
             // Make a request to the OpenAI API
@@ -69,7 +69,7 @@ class Reviews {
             // Create review in db
             await this.create({
                 ...botReview,
-                book_id: bookID
+                book_id: bookID as string
             });
             // Return the result from Bot
             return [botReview];
